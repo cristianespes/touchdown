@@ -25,6 +25,15 @@ struct HomeView: View {
                         
                         CategoryGridView()
                         
+                        TitleView(title: "Helmets")
+                        
+                        LazyVGrid(columns: gridLayout, spacing: 16, content: {
+                            ForEach(products) {
+                                ProductItemView(product: $0)
+                            }
+                        })
+                        .padding()
+                        
                         FooterView()
                     }
                 })
