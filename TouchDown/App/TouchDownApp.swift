@@ -11,7 +11,7 @@ import SwiftUI
 struct TouchDownApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            HomeView()
         }
     }
 }
