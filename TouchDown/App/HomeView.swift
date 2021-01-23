@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  HomeView.swift
 //  TouchDown
 //
 //  Created by Cristian Espes on 23/01/2021.
@@ -24,6 +24,19 @@ struct HomeView: View {
                             .padding(.vertical)
                         
                         CategoryGridView()
+                        
+                        TitleView(title: "Helmets")
+                        
+                        LazyVGrid(columns: gridLayout, spacing: 16, content: {
+                            ForEach(products) {
+                                ProductItemView(product: $0)
+                            }
+                        })
+                        .padding()
+                        
+                        TitleView(title: "Brands")
+                        
+                        BrandGridView()
                         
                         FooterView()
                     }
