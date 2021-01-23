@@ -34,6 +34,10 @@ struct HomeView: View {
                         })
                         .padding()
                         
+                        TitleView(title: "Brands")
+                        
+                        BrandGridView()
+                        
                         FooterView()
                     }
                 })
