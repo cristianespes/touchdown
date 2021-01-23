@@ -27,7 +27,9 @@ struct FooterView: View {
                 .multilineTextAlignment(.center)
                 .layoutPriority(1)
         }
-        .padding()
+        .padding(.horizontal)
+        .padding(.top)
+        .padding(.bottom, UIApplication.shared.windows.first?.safeAreaInsets.bottom)
     }
 }
 
