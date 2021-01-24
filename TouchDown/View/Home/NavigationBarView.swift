@@ -35,16 +35,15 @@ struct NavigationBarView: View {
             Spacer()
             
             Button(action: {}, label: {
-                ZStack {
-                    Image(systemName: "cart")
-                        .font(.title)
-                        .foregroundColor(.black)
-                    
-                    Circle()
-                        .fill(Color.red)
-                        .frame(width: 14, height: 14, alignment: .center)
-                        .offset(x: 13, y: -10)
-                }
+                Image(systemName: "cart")
+                    .font(.title)
+                    .foregroundColor(.black)
+                    .overlay(
+                        Circle()
+                            .fill(Color.red)
+                            .frame(width: 14, height: 14, alignment: .center)
+                            .offset(x: 13, y: -10)
+                    )
             })
         }
         .padding(.horizontal)

@@ -22,9 +22,36 @@ struct ProductDetailView: View {
             
             TopPartDetailView(product: product)
                 .padding(.horizontal)
+                .zIndex(1)
             
-            Spacer()
+            VStack(alignment: .center, spacing: 0, content: {
+                
+                RatingsSizesDetailView()
+                    .padding(.top, -20)
+                    .padding(.bottom, 10)
+                
+                ScrollView(.vertical, showsIndicators: false, content: {
+                    Text(product.description)
+                        .font(.system(.body, design: .rounded))
+                        .foregroundColor(.gray)
+                        .multilineTextAlignment(.leading)
+                })
+                
+                QuantityFavouriteDetailView()
+                    .padding(.vertical, 10)
+                
+                AddToCartDetailView(product: product)
+                    .padding(.bottom, 20)
+                
+            })
+            .padding(.horizontal)
+            .background(
+                Color.white
+                    .clipShape(CustomShape())
+                    .padding(.top, -105)
+            )
         })
+        .zIndex(0)
         .background(
             Color(red: product.red, green: product.green, blue: product.blue)
         )
