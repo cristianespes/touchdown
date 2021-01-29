@@ -11,7 +11,6 @@ struct HomeView: View {
     
     // MARK: - Properties
     @EnvironmentObject var shop: Shop
-    @Namespace private var animationImg
     
     // MARK: - Body
     var body: some View {
@@ -31,7 +30,7 @@ struct HomeView: View {
                         
                         LazyVGrid(columns: gridLayout, spacing: 16, content: {
                             ForEach(products) { product in
-                                ProductItemView(product: product, namespace: animationImg)
+                                ProductItemView(product: product)
                                     .onTapGesture {
                                         feedback.impactOccurred()
                                         
@@ -55,7 +54,7 @@ struct HomeView: View {
             .background(colorBackground.ignoresSafeArea(.all, edges: .all))
             
             if shop.showingProduct, shop.selectedProduct != nil {
-                ProductDetailView(namespace: animationImg)
+                ProductDetailView()
                     .environmentObject(shop)
             }
         }

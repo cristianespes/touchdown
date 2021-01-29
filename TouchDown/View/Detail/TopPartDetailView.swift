@@ -12,7 +12,6 @@ struct TopPartDetailView: View {
     // MARK: - Properties
     @EnvironmentObject var shop: Shop
     @State private var isAnimated = false
-    let namespace: Namespace.ID
     
     // MARK: - Body
     var body: some View {
@@ -34,7 +33,6 @@ struct TopPartDetailView: View {
                 .resizable()
                 .scaledToFit()
                 .offset(y: isAnimated ? 0 : -35)
-                .matchedGeometryEffect(id: shop.selectedProduct?.id ?? sampleProduct.id, in: namespace)
         })
         .onAppear {
             withAnimation(.easeOut(duration: 0.75)) {
@@ -48,7 +46,7 @@ struct TopPartDetailView: View {
 struct TopPartDetailView_Previews: PreviewProvider {
     @Namespace static var placeholder
     static var previews: some View {
-        TopPartDetailView(namespace: placeholder)
+        TopPartDetailView()
             .environmentObject(Shop())
             .previewLayout(.sizeThatFits)
             .padding()

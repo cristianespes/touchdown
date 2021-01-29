@@ -11,7 +11,6 @@ struct ProductDetailView: View {
     
     // MARK: - Properties
     @EnvironmentObject var shop: Shop
-    let namespace: Namespace.ID
     
     // MARK: - Body
     var body: some View {
@@ -22,7 +21,7 @@ struct ProductDetailView: View {
                 .padding(.horizontal)
                 .environmentObject(shop)
             
-            TopPartDetailView(namespace: namespace)
+            TopPartDetailView()
                 .padding(.horizontal)
                 .zIndex(1)
                 .environmentObject(shop)
@@ -69,9 +68,8 @@ struct ProductDetailView: View {
 
 #if DEBUG
 struct ProductDetailView_Previews: PreviewProvider {
-    @Namespace static var placeholder
     static var previews: some View {
-        ProductDetailView(namespace: placeholder)
+        ProductDetailView()
             .environmentObject(Shop())
             .previewLayout(.fixed(width: 375, height: 812))
     }
