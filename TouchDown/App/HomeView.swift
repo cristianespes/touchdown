@@ -11,50 +11,51 @@ struct HomeView: View {
     
     // MARK: - Properties
     @EnvironmentObject var shop: Shop
+    @Namespace private var animationImg
     
     // MARK: - Body
     var body: some View {
         ZStack {
-            if shop.showingProduct == false && shop.selectedProduct == nil {
-                VStack(spacing: 0) {
-                    NavigationBarView()
-                    
-                    ScrollView(.vertical, showsIndicators: false, content: {
-                        VStack(spacing: 0) {
-                            
-                            FeaturedTabView()
-                                .padding(.vertical)
-                            
-                            CategoryGridView()
-                            
-                            TitleView(title: "Helmets")
-                            
-                            LazyVGrid(columns: gridLayout, spacing: 16, content: {
-                                ForEach(products) { product in
-                                    ProductItemView(product: product)
-                                        .onTapGesture {
-                                            feedback.impactOccurred()
-                                            
-                                            withAnimation(.easeOut) {
-                                                shop.selectedProduct = product
-                                                shop.showingProduct = true
-                                            }
+            VStack(spacing: 0) {
+                NavigationBarView()
+                
+                ScrollView(.vertical, showsIndicators: false, content: {
+                    VStack(spacing: 0) {
+                        
+                        FeaturedTabView()
+                            .padding(.vertical)
+                        
+                        CategoryGridView()
+                        
+                        TitleView(title: "Helmets")
+                        
+                        LazyVGrid(columns: gridLayout, spacing: 16, content: {
+                            ForEach(products) { product in
+                                ProductItemView(product: product, namespace: animationImg)
+                                    .onTapGesture {
+                                        feedback.impactOccurred()
+                                        
+                                        withAnimation(.easeOut) {
+                                            shop.selectedProduct = product
+                                            shop.showingProduct = true
                                         }
-                                }
-                            })
-                            .padding()
-                            
-                            TitleView(title: "Brands")
-                            
-                            BrandGridView()
-                            
-                            FooterView()
-                        }
-                    })
-                }
-                .background(colorBackground.ignoresSafeArea(.all, edges: .all))
-            } else {
-                ProductDetailView()
+                                    }
+                            }
+                        })
+                        .padding()
+                        
+                        TitleView(title: "Brands")
+                        
+                        BrandGridView()
+                        
+                        FooterView()
+                    }
+                })
+            }
+            .background(colorBackground.ignoresSafeArea(.all, edges: .all))
+            
+            if shop.showingProduct, shop.selectedProduct != nil {
+                ProductDetailView(namespace: animationImg)
                     .environmentObject(shop)
             }
         }

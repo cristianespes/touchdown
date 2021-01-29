@@ -11,6 +11,7 @@ struct ProductItemView: View {
     
     // MARK: - Properties
     let product: Product
+    let namespace: Namespace.ID
     
     // MARK: - Body
     var body: some View {
@@ -20,6 +21,7 @@ struct ProductItemView: View {
                     .resizable()
                     .scaledToFit()
                     .padding(10)
+                    .matchedGeometryEffect(id: product.id, in: namespace)
             }
             .background(Color(red: product.red, green: product.green, blue: product.blue))
             .cornerRadius(12)
@@ -37,8 +39,9 @@ struct ProductItemView: View {
 
 #if DEBUG
 struct ProductItemView_Previews: PreviewProvider {
+    @Namespace static var placeholder
     static var previews: some View {
-        ProductItemView(product: products[0])
+        ProductItemView(product: products[0], namespace: placeholder)
             .previewLayout(.fixed(width: 200, height: 300))
             .padding()
             .background(colorBackground)
