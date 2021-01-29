@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		192446DD25BC50320021B6DB /* NavigationBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 192446DC25BC50320021B6DB /* NavigationBarView.swift */; };
 		192446E025BC50F60021B6DB /* LogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 192446DF25BC50F60021B6DB /* LogoView.swift */; };
+		194D1B1425C46E990001365D /* Shop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194D1B1325C46E990001365D /* Shop.swift */; };
 		1966470425BC3FA600B11E0B /* TouchDownApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1966470325BC3FA600B11E0B /* TouchDownApp.swift */; };
 		1966470625BC3FA600B11E0B /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1966470525BC3FA600B11E0B /* HomeView.swift */; };
 		1966470825BC3FA700B11E0B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1966470725BC3FA700B11E0B /* Assets.xcassets */; };
@@ -46,6 +47,7 @@
 /* Begin PBXFileReference section */
 		192446DC25BC50320021B6DB /* NavigationBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarView.swift; sourceTree = "<group>"; };
 		192446DF25BC50F60021B6DB /* LogoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoView.swift; sourceTree = "<group>"; };
+		194D1B1325C46E990001365D /* Shop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shop.swift; sourceTree = "<group>"; };
 		1966470025BC3FA600B11E0B /* TouchDown.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TouchDown.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1966470325BC3FA600B11E0B /* TouchDownApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchDownApp.swift; sourceTree = "<group>"; };
 		1966470525BC3FA600B11E0B /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -219,6 +221,7 @@
 			children = (
 				1966472625BC492500B11E0B /* Constant.swift */,
 				1986030D25BD6DF00004F9BD /* CustomShape.swift */,
+				194D1B1325C46E990001365D /* Shop.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -320,6 +323,7 @@
 				1973CAEF25BC7A6F00B89500 /* FeaturedTabView.swift in Sources */,
 				1986030E25BD6DF00004F9BD /* CustomShape.swift in Sources */,
 				1973CAE625BC78C300B89500 /* PlayerModel.swift in Sources */,
+				194D1B1425C46E990001365D /* Shop.swift in Sources */,
 				1973CB0825BC854C00B89500 /* BrandModel.swift in Sources */,
 				1973CAFF25BC821000B89500 /* TitleView.swift in Sources */,
 				196A38F425BD713700718AFB /* QuantityFavouriteDetailView.swift in Sources */,

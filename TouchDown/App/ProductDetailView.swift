@@ -10,19 +10,21 @@ import SwiftUI
 struct ProductDetailView: View {
     
     // MARK: - Properties
-    let product: Product
+    @EnvironmentObject var shop: Shop
     
     // MARK: - Body
     var body: some View {
         VStack(alignment: .leading, spacing: 6, content: {
             NavigationBarDetailView()
             
-            HeaderDetailView(product: product)
+            HeaderDetailView()
                 .padding(.horizontal)
+                .environmentObject(shop)
             
-            TopPartDetailView(product: product)
+            TopPartDetailView()
                 .padding(.horizontal)
                 .zIndex(1)
+                .environmentObject(shop)
             
             VStack(alignment: .center, spacing: 0, content: {
                 
@@ -31,7 +33,7 @@ struct ProductDetailView: View {
                     .padding(.bottom, 10)
                 
                 ScrollView(.vertical, showsIndicators: false, content: {
-                    Text(product.description)
+                    Text(shop.selectedProduct?.description ?? sampleProduct.description)
                         .font(.system(.body, design: .rounded))
                         .foregroundColor(.gray)
                         .multilineTextAlignment(.leading)
@@ -40,8 +42,9 @@ struct ProductDetailView: View {
                 QuantityFavouriteDetailView()
                     .padding(.vertical, 10)
                 
-                AddToCartDetailView(product: product)
+                AddToCartDetailView()
                     .padding(.bottom, 20)
+                    .environmentObject(shop)
                 
             })
             .padding(.horizontal)
@@ -53,7 +56,11 @@ struct ProductDetailView: View {
         })
         .zIndex(0)
         .background(
-            Color(red: product.red, green: product.green, blue: product.blue)
+            Color(
+                red: shop.selectedProduct?.red ?? sampleProduct.red,
+                green: shop.selectedProduct?.green ?? sampleProduct.green,
+                blue: shop.selectedProduct?.blue ?? sampleProduct.blue
+            )
         )
         .ignoresSafeArea(.all, edges: .all)
     }
@@ -62,7 +69,8 @@ struct ProductDetailView: View {
 #if DEBUG
 struct ProductDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        ProductDetailView(product: sampleProduct)
+        ProductDetailView()
+            .environmentObject(Shop())
             .previewLayout(.fixed(width: 375, height: 812))
     }
 }
