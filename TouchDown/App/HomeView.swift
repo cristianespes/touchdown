@@ -10,6 +10,7 @@ import SwiftUI
 struct HomeView: View {
     
     // MARK: - Properties
+    @EnvironmentObject var shop: Shop
     
     // MARK: - Body
     var body: some View {
@@ -28,8 +29,16 @@ struct HomeView: View {
                         TitleView(title: "Helmets")
                         
                         LazyVGrid(columns: gridLayout, spacing: 16, content: {
-                            ForEach(products) {
-                                ProductItemView(product: $0)
+                            ForEach(products) { product in
+                                ProductItemView(product: product)
+                                    .onTapGesture {
+                                        feedback.impactOccurred()
+                                        
+                                        withAnimation(.easeOut) {
+                                            shop.selectedProduct = product
+                                            shop.showingProduct = true
+                                        }
+                                    }
                             }
                         })
                         .padding()
@@ -43,8 +52,13 @@ struct HomeView: View {
                 })
             }
             .background(colorBackground.ignoresSafeArea(.all, edges: .all))
+            
+            if shop.showingProduct, shop.selectedProduct != nil {
+                ProductDetailView()
+                    .environmentObject(shop)
+            }
         }
-        .ignoresSafeArea(.all, edges: .all)
+        .ignoresSafeArea(.all, edges: .top)
     }
 }
 
@@ -53,6 +67,7 @@ struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         HomeView()
             .previewDevice("iPhone 12 mini")
+            .environmentObject(Shop())
     }
 }
 #endif
